@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class TradableItemController
 {
-    public TradableItemView view { get; private set; }
-    public TradableItemModel model { get; private set; }
+    private TradableItemView view;
+    private TradableItemModel model;
 
     public Action<TradableItemController> OnItemSelected;
     public TradableItemController(TradableItemModel model, TradableItemView view)
@@ -13,6 +13,7 @@ public class TradableItemController
         this.model = model;
 
         this.view.SetIconSprite(model.icon);
+        this.view.SetQuantityText(model.quantity);
 
         this.view.OnItemClicked += OnItemClicked;
         this.view.OnItemHovered += OnItemHovered;
@@ -36,10 +37,7 @@ public class TradableItemController
 
     public void setItemQuantity(int quantity)
     {
+        model.quantity = quantity;
         view.SetQuantityText(quantity);
-    }
-    public void setItemSprite(Sprite icon)
-    {
-        view.SetIconSprite(icon);
     }
 }

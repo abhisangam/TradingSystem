@@ -14,9 +14,11 @@ public class TradableItemModel
     public int weight;
     public TradableItemRarity rarity;
 
+    public int quantity;
+
     public TradableItemSO tradableItemSO { get; private set; }
 
-    public TradableItemModel(TradableItemSO tradableItemSO)
+    public TradableItemModel(TradableItemSO tradableItemSO, int quantity)
     {
         this.name = tradableItemSO.name;
         this.type = tradableItemSO.type;
@@ -28,5 +30,7 @@ public class TradableItemModel
         this.rarity = tradableItemSO.rarity;
 
         this.tradableItemSO = tradableItemSO;
+        this.quantity = quantity;
+
     }
 }

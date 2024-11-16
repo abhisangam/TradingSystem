@@ -21,7 +21,7 @@ public class Manager : MonoBehaviour
         playerInventoryController.AddItem(item2, 7);
         playerInventoryController.AddItem(item3, 1);
 
-        playerInventoryController.InitializeInventoryView();
+        playerInventoryController.ShowInventory();
     }
 
     // Update is called once per frame

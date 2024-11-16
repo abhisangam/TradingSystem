@@ -14,5 +14,4 @@ public abstract class Inventory
 
     public abstract void AddItem(TradableItemSO item, int amount);
     public abstract void RemoveItem(TradableItemSO item, int amount);
-
 }

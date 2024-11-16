@@ -15,11 +15,9 @@ public class PlayerInventoryView : MonoBehaviour
         
     }
 
-    public TradableItemView CreateAndAddItem(TradableItemSO tradableItemSO, int quantity)
+    public TradableItemView CreateAndAddItem()
     {
         TradableItemView itemView = Instantiate(tradableItemPrefab, itemsParent);
-        itemView.SetIconSprite(tradableItemSO.icon);
-        itemView.SetQuantityText(quantity);
 
         return itemView;
 

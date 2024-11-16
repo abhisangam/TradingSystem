@@ -21,12 +21,12 @@ public class PlayerInventoryController
         model.RemoveItem(item, amount);
     }
 
-    public void InitializeInventoryView()
+    public void ShowInventory()
     {
         foreach (var item in model.items)
         {
-            TradableItemView itemView = view.CreateAndAddItem(item.Key, item.Value);
-            TradableItemModel itemModel = new TradableItemModel(item.Key);
+            TradableItemView itemView = view.CreateAndAddItem();
+            TradableItemModel itemModel = new TradableItemModel(item.Key, item.Value);
             TradableItemController itemController = new TradableItemController(itemModel, itemView);
 
             itemController.OnItemSelected += OnItemSelected;
