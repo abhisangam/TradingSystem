@@ -9,20 +9,7 @@ public class PlayerInventoryController
     {
         model = playerInventoryModel;
         view = playerInventoryView;
-    }
 
-    public void AddItem(TradableItemSO item, int amount)
-    {
-        model.AddItem(item, amount);
-    }
-
-    public void RemoveItem(TradableItemSO item, int amount)
-    {
-        model.RemoveItem(item, amount);
-    }
-
-    public void ShowInventory()
-    {
         foreach (var item in model.items)
         {
             TradableItemView itemView = view.CreateAndAddItem();
@@ -33,8 +20,39 @@ public class PlayerInventoryController
         };
     }
 
+    public void AddItem(TradableItemSO item, int amount)
+    {
+        //check if item type already exists model
+        //and add in view if item is totally new
+        if(!model.items.ContainsKey(item))
+        {
+            TradableItemView itemView = view.CreateAndAddItem();
+            TradableItemModel itemModel = new TradableItemModel(item, amount);
+            TradableItemController itemController = new TradableItemController(itemModel, itemView);
+
+            itemController.OnItemSelected += OnItemSelected;
+        }
+        model.AddItem(item, amount);
+    }
+
+    public void RemoveItem(TradableItemSO item, int amount)
+    {
+        model.RemoveItem(item, amount);
+        //if item does not have any quantity left, remove it from view
+        if (model.GetItemCount(item) == 0)
+        {
+            //remove item from view
+            
+        }
+    }
+
+    public void ShowInventory()
+    {
+        view.DisplayInventoryView();
+    }
+
     public void OnItemSelected(TradableItemController itemController)
     {
-        Debug.Log("Item selected: " + itemController.view.name);
+        Debug.Log("Item selected: " + itemController.getModel().name);
     }
 }

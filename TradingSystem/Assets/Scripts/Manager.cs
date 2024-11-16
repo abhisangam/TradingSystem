@@ -15,7 +15,7 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerInventoryModel = new PlayerInventoryModel();
+        playerInventoryModel = new PlayerInventoryModel(100);
         playerInventoryController = new PlayerInventoryController(playerInventoryModel, playerInventoryView);
         playerInventoryController.AddItem(item1, 5);
         playerInventoryController.AddItem(item2, 7);

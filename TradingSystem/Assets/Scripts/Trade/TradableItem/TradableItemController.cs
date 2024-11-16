@@ -40,4 +40,9 @@ public class TradableItemController
         model.quantity = quantity;
         view.SetQuantityText(quantity);
     }
+
+    public TradableItemModel getModel()
+    {
+        return this.model;
+    }
 }
