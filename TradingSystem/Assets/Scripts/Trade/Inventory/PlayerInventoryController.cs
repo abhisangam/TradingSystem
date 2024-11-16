@@ -54,5 +54,6 @@ public class PlayerInventoryController
     public void OnItemSelected(TradableItemController itemController)
     {
         Debug.Log("Item selected: " + itemController.getModel().name);
+        view.getTradableItemInfoPopupController().Show(itemController.getModel(), true);
     }
 }
