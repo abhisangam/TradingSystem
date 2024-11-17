@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using UnityEngine;
 
 public class TradableItemController
@@ -6,7 +7,7 @@ public class TradableItemController
     private TradableItemView view;
     private TradableItemModel model;
 
-    public Action<TradableItemController> OnItemSelected;
+    public Action<TradableItemSO> OnItemSelected;
     public TradableItemController(TradableItemModel model, TradableItemView view)
     {
         this.view = view;
@@ -22,7 +23,7 @@ public class TradableItemController
     private void OnItemClicked()
     {
         Debug.Log("Item clicked");
-        OnItemSelected?.Invoke(this);
+        OnItemSelected?.Invoke(this.model.tradableItemSO);
     }
 
     private void OnItemHovered()
@@ -44,5 +45,24 @@ public class TradableItemController
     public TradableItemModel getModel()
     {
         return this.model;
+    }
+
+    public void DestroyModelView()
+    {
+        GameObject.Destroy(view.gameObject);
+        model = null;
+    }
+    ~TradableItemController()
+    {
+        this.view.OnItemClicked -= OnItemClicked;
+        this.view.OnItemHovered -= OnItemHovered;
+        this.view.OnItemHoverExited -= OnItemHoverExited;
+
+        GameObject.Destroy(view.gameObject);
+
+        model = null;
+        view = null;
+
+        Debug.Log("THIS BLOODY CONTROLLER IS DESTROYED NOW");
     }
 }

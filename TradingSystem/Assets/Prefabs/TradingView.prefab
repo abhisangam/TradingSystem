@@ -249,6 +249,7 @@ GameObject:
   - component: {fileID: 4647702246602335810}
   - component: {fileID: 5617622137101009765}
   - component: {fileID: 4837564193808954192}
+  - component: {fileID: 2554935861916941780}
   m_Layer: 5
   m_Name: TradingView
   m_TagString: Untagged
@@ -315,6 +316,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2554935861916941780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7761412518407073247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b423393f0cfaf2749900ab5d102634ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tradableItemInfoPopup: {fileID: 0}
 --- !u!1001 &920777863333584941
 PrefabInstance:
   m_ObjectHideFlags: 0

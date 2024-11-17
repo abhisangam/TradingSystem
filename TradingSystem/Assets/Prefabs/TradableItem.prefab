@@ -144,7 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7260399545949465154}
   - component: {fileID: 5236389001994298450}
-  - component: {fileID: 1145166966888483235}
+  - component: {fileID: 8594657811746349237}
   m_Layer: 5
   m_Name: TradableItem
   m_TagString: Untagged
@@ -187,7 +187,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconImage: {fileID: 6410929768881965650}
   quantityText: {fileID: 3842271852082124742}
---- !u!114 &1145166966888483235
+  button: {fileID: 8594657811746349237}
+--- !u!114 &8594657811746349237
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

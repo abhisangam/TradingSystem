@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Progress;
 
-public class PlayerInventoryController
+public class ShopInventoryController
 {
-    public PlayerInventoryModel model { get; private set; }
-    private PlayerInventoryView view;
+    public ShopInventoryModel model { get; private set; }
+    private ShopInventoryView view;
 
     private Dictionary<TradableItemSO, TradableItemController> itemControllers = new Dictionary<TradableItemSO, TradableItemController>();
 
-    public Action<TradableItemSO> OnItemSelected; 
-    public PlayerInventoryController(PlayerInventoryModel playerInventoryModel, PlayerInventoryView playerInventoryView)
+    public Action<TradableItemSO> OnItemSelected;
+    public ShopInventoryController(ShopInventoryModel shopInventoryModel, ShopInventoryView shopInventoryView)
     {
-        model = playerInventoryModel;
-        view = playerInventoryView;
+        model = shopInventoryModel;
+        view = shopInventoryView;
 
         foreach (var item in model.items)
         {
@@ -34,7 +34,7 @@ public class PlayerInventoryController
     }
 
     private void DestroyItemController(TradableItemSO itemSO)
-    { 
+    {
         TradableItemController controller = itemControllers[itemSO];
 
         if (controller != null)
@@ -51,7 +51,7 @@ public class PlayerInventoryController
     {
         //check if item type already exists model
         //and add in view if item is totally new
-        if(!model.items.ContainsKey(itemSO))
+        if (!model.items.ContainsKey(itemSO))
         {
             itemControllers.TryAdd(itemSO, CreateItemController(itemSO, quantity));
         }
@@ -62,7 +62,7 @@ public class PlayerInventoryController
     public void RemoveItem(TradableItemSO itemSO, int amount)
     {
         model.RemoveItem(itemSO, amount);
-        if(model.items.ContainsKey(itemSO))
+        if (model.items.ContainsKey(itemSO))
             itemControllers[itemSO].setItemQuantity(model.items[itemSO]);
         else
         {

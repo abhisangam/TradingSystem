@@ -1,20 +1,20 @@
 using UnityEngine;
 using static UnityEditor.Progress;
 
-public class PlayerInventoryView : MonoBehaviour
+public class ShopInventoryView : MonoBehaviour
 {
-    private PlayerInventoryController controller;
+    private ShopInventoryController controller;
     [SerializeField] private Transform itemsParent;
     [SerializeField] private TradableItemView tradableItemPrefab;
 
     [SerializeField] private TradableItemInfoPopupController itemInfoPopupController;
-    public void SetController(PlayerInventoryController controller)
+    public void SetController(ShopInventoryController controller)
     {
         this.controller = controller;
     }
     public void DisplayInventoryView()
     {
-        
+
     }
 
     public TradableItemView CreateItemView()

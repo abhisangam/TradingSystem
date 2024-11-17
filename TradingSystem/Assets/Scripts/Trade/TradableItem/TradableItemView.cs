@@ -7,6 +7,7 @@ public class TradableItemView : MonoBehaviour
 {
     [SerializeField] private Image iconImage;
     [SerializeField] private TextMeshProUGUI quantityText;
+    [SerializeField] private Button button;
 
     public Action OnItemClicked;
     public Action OnItemHovered;
@@ -14,7 +15,6 @@ public class TradableItemView : MonoBehaviour
 
     private void Awake()
     {
-        var button = GetComponent<Button>();
         if (button != null)
             button.onClick.AddListener(() => OnItemClicked?.Invoke());
     }

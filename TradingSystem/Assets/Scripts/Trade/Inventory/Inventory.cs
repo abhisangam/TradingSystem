@@ -35,8 +35,13 @@ public class Inventory
     {
         if (items.ContainsKey(item))
         {
-            items.Remove(item);
+            items[item] -= amount;
             totalWeight -= item.weight * amount;
+
+            if (items[item] <= 0)
+            {
+                items.Remove(item);
+            }
         }
     }
 
@@ -58,5 +63,15 @@ public class Inventory
 
         //Setting max weight any way, handling it is not the scope of this project
         inventoryMaxWeight = maxWeight;
+    }
+
+    public int GetTotalWeight()
+    {
+        return totalWeight;
+    }
+
+    public int GetMaxWeight()
+    {
+        return inventoryMaxWeight;
     }
 }
