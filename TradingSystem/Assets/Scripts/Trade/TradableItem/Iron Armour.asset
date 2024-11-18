@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 360a144f83ebf3845b1fe7219de4960d, type: 3}
-  m_Name: Sword
+  m_Name: Iron Armour
   m_EditorClassIdentifier: 
-  type: 0
-  description: Mighty weapon
-  icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  buyingPrice: 6000
-  sellingPrice: 2000
-  weight: 10
+  type: 1
+  description: Yellow robe with thick fabric
+  icon: {fileID: 21300000, guid: 567fdd2e557fefc478f8aaa7ae56fb11, type: 3}
+  buyingPrice: 4000
+  sellingPrice: 100
+  weight: 2
   rarity: 0

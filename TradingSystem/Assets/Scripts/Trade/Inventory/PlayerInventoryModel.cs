@@ -1,4 +1,4 @@
-public class PlayerInventoryModel : Inventory
+public class PlayerInventoryModel : InventoryModel
 {
     public PlayerInventoryModel(int maxWeight) : base(maxWeight)
     {

@@ -1,25 +1,23 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEditor.Progress;
 
-public class ShopInventoryView : MonoBehaviour
+public class ShopInventoryView : InventoryView
 {
-    private ShopInventoryController controller;
-    [SerializeField] private Transform itemsParent;
-    [SerializeField] private TradableItemView tradableItemPrefab;
+    [SerializeField] private ItemFilterToggle[] itemTypeFilterButtons;
 
-    [SerializeField] private TradableItemInfoPopupController itemInfoPopupController;
-    public void SetController(ShopInventoryController controller)
+    public Action<TradableItemType> OnFilterItem;
+    private void Start()
     {
-        this.controller = controller;
-    }
-    public void DisplayInventoryView()
-    {
-
+        foreach (ItemFilterToggle toggle in itemTypeFilterButtons)
+        {
+            toggle.OnFilterItem += OnItemTypeFilterButtonClicked;
+        }
     }
 
-    public TradableItemView CreateItemView()
+    private void OnItemTypeFilterButtonClicked(TradableItemType type)
     {
-        TradableItemView itemView = Instantiate(tradableItemPrefab, itemsParent);
-        return itemView;
+        OnFilterItem?.Invoke(type);
     }
 }

@@ -1,4 +1,4 @@
-public class ShopInventoryModel : Inventory
+public class ShopInventoryModel : InventoryModel
 {
     public ShopInventoryModel(int maxWeight) : base(maxWeight)
     {

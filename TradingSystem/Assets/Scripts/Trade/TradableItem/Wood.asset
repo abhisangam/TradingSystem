@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 360a144f83ebf3845b1fe7219de4960d, type: 3}
-  m_Name: Robe
+  m_Name: Wood
   m_EditorClassIdentifier: 
   type: 0
-  description: Yellow robe with thick fabric
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  buyingPrice: 4000
-  sellingPrice: 100
-  weight: 2
+  description: Adds power
+  icon: {fileID: 21300000, guid: f8a9cfc721a20ce409c3d743e9b251bc, type: 3}
+  buyingPrice: 100
+  sellingPrice: 80
+  weight: 1
   rarity: 0

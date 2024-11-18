@@ -52,6 +52,11 @@ public class TradableItemController
         GameObject.Destroy(view.gameObject);
         model = null;
     }
+
+    public void SetViewVisible(bool visible)
+    {
+        view.gameObject.SetActive(visible);
+    }
     ~TradableItemController()
     {
         this.view.OnItemClicked -= OnItemClicked;

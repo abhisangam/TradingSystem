@@ -13,9 +13,7 @@ public class Manager : MonoBehaviour
     private ShopInventoryModel shopInventoryModel;
     private ShopInventoryController shopInventoryController;
 
-    public TradableItemSO item1;
-    public TradableItemSO item2;
-    public TradableItemSO item3;
+    public TradableItemSO[] tradableItems;
     // Start is called before the first frame update
 
     public TradeManager tradeManager;
@@ -23,13 +21,17 @@ public class Manager : MonoBehaviour
     {
         playerInventoryModel = new PlayerInventoryModel(100);
         playerInventoryController = new PlayerInventoryController(playerInventoryModel, playerInventoryView);
-        playerInventoryController.AddItem(item1, 5);
-        playerInventoryController.AddItem(item2, 7);
-        playerInventoryController.AddItem(item3, 1);
+        for(int i = 0; i < tradableItems.Length; i++)
+        {
+            playerInventoryController.AddItem(tradableItems[i], 1);
+        }
 
         shopInventoryModel = new ShopInventoryModel(100);
         shopInventoryController = new ShopInventoryController(shopInventoryModel, shopInventoryView);
-        shopInventoryController.AddItem(item3, 4);
+        for (int i = 0; i < tradableItems.Length; i++)
+        {
+            shopInventoryController.AddItem(tradableItems[i], 10);
+        }
 
         playerInventoryController.ShowInventory();
 
