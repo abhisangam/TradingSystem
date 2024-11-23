@@ -10,11 +10,17 @@ public class ShopInventoryController : InventoryController
         shopInventoryView.OnFilterItem += OnFilterItem;
     }    
 
-    private void OnFilterItem(TradableItemType type)
+    private void OnFilterItem(TradableItemFilterOption type)
     {
         foreach (TradableItemController itemControler in itemControllers.Values)
         {
-            if (itemControler.getModel().type == type)
+            if(type == TradableItemFilterOption.All)
+            {
+                itemControler.SetViewVisible(true);
+                continue;
+            }
+
+            if (itemControler.GetItemType() == filterTypeToItemType(type))
             {
                 itemControler.SetViewVisible(true);
             }
@@ -22,6 +28,23 @@ public class ShopInventoryController : InventoryController
             {
                 itemControler.SetViewVisible(false);
             }
+        }
+    }
+
+    private TradableItemType filterTypeToItemType(TradableItemFilterOption type)
+    {
+        switch (type)
+        {
+            case TradableItemFilterOption.Consumable:
+                return TradableItemType.Consumable;
+            case TradableItemFilterOption.Material:
+                return TradableItemType.Material;
+            case TradableItemFilterOption.Weapon:
+                return TradableItemType.Weapon;
+            case TradableItemFilterOption.Treasure:
+                return TradableItemType.Treasure;
+            default:
+                return TradableItemType.Consumable;
         }
     }
 }

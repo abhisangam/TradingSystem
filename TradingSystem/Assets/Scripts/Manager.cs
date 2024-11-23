@@ -19,14 +19,14 @@ public class Manager : MonoBehaviour
     public TradeManager tradeManager;
     void Start()
     {
-        playerInventoryModel = new PlayerInventoryModel(100);
+        playerInventoryModel = new PlayerInventoryModel(100000);
         playerInventoryController = new PlayerInventoryController(playerInventoryModel, playerInventoryView);
         for(int i = 0; i < tradableItems.Length; i++)
         {
             playerInventoryController.AddItem(tradableItems[i], 1);
         }
 
-        shopInventoryModel = new ShopInventoryModel(100);
+        shopInventoryModel = new ShopInventoryModel(100000);
         shopInventoryController = new ShopInventoryController(shopInventoryModel, shopInventoryView);
         for (int i = 0; i < tradableItems.Length; i++)
         {

@@ -1,22 +1,28 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TradableItemView : MonoBehaviour
+public class TradableItemView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Image iconImage;
     [SerializeField] private TextMeshProUGUI quantityText;
     [SerializeField] private Button button;
 
+    private TradableItemController controller;
+
     public Action OnItemClicked;
-    public Action OnItemHovered;
-    public Action OnItemHoverExited;
 
     private void Awake()
     {
         if (button != null)
             button.onClick.AddListener(() => OnItemClicked?.Invoke());
+    }
+
+    public void SetController(TradableItemController controller)
+    {
+        this.controller = controller;
     }
 
     public void SetIconSprite(Sprite icon)
@@ -29,13 +35,15 @@ public class TradableItemView : MonoBehaviour
         quantityText.text = quantity.ToString();
     }
 
-    private void OnMouseEnter()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        OnItemHovered?.Invoke();
+        TradableItemQuickInfo.Show(controller.GetItemSO());
+        Debug.Log("Pointer Enter");
     }
 
-    private void OnMouseExit()
+    public void OnPointerExit(PointerEventData eventData)
     {
-        OnItemHoverExited?.Invoke();
+        TradableItemQuickInfo.Hide();
+        Debug.Log("Pointer Exit");
     }
 }

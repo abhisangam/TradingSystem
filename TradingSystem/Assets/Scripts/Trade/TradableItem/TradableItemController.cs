@@ -15,25 +15,14 @@ public class TradableItemController
 
         this.view.SetIconSprite(model.icon);
         this.view.SetQuantityText(model.quantity);
+        this.view.SetController(this);
 
         this.view.OnItemClicked += OnItemClicked;
-        this.view.OnItemHovered += OnItemHovered;
-        this.view.OnItemHoverExited += OnItemHoverExited;
     }
     private void OnItemClicked()
     {
         Debug.Log("Item clicked");
         OnItemSelected?.Invoke(this.model.tradableItemSO);
-    }
-
-    private void OnItemHovered()
-    {
-        // Display item info
-    }
-
-    private void OnItemHoverExited()
-    {
-        // Hide item info
     }
 
     public void setItemQuantity(int quantity)
@@ -42,9 +31,14 @@ public class TradableItemController
         view.SetQuantityText(quantity);
     }
 
-    public TradableItemModel getModel()
+    public TradableItemSO GetItemSO()
     {
-        return this.model;
+        return this.model.tradableItemSO;
+    }
+
+    public TradableItemType GetItemType()
+    {
+        return this.model.tradableItemSO.type;
     }
 
     public void DestroyModelView()
@@ -60,8 +54,6 @@ public class TradableItemController
     ~TradableItemController()
     {
         this.view.OnItemClicked -= OnItemClicked;
-        this.view.OnItemHovered -= OnItemHovered;
-        this.view.OnItemHoverExited -= OnItemHoverExited;
 
         GameObject.Destroy(view.gameObject);
 

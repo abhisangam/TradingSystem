@@ -5,7 +5,8 @@ using static UnityEditor.Progress;
 
 public class InventoryController
 {
-    public InventoryModel model { get; private set; }
+    protected InventoryModel model;
+    public InventoryModel Model { get { return model; } }
     protected InventoryView view;
 
     protected Dictionary<TradableItemSO, TradableItemController> itemControllers = new Dictionary<TradableItemSO, TradableItemController>();
@@ -81,5 +82,20 @@ public class InventoryController
     public void RelayItemClickEvent(TradableItemSO itemSO)
     {
         OnItemSelected?.Invoke(itemSO);
+    }
+
+    public int GetItemQuantity(TradableItemSO itemSO)
+    {
+        return model.items[itemSO];
+    }
+
+    public int GetInventoryWeight()
+    {
+        return model.GetTotalWeight();
+    }
+
+    public int GetInventoryMaxWeight()
+    {
+        return model.GetMaxWeight();
     }
 }

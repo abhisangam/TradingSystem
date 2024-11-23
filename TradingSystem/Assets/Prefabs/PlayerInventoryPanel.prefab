@@ -506,6 +506,7 @@ MonoBehaviour:
   itemsParent: {fileID: 6442914283569801007}
   tradableItemPrefab: {fileID: 5236389001994298450, guid: d27c36754a0ec6f469de6fa4fd4ee194, type: 3}
   itemInfoPopupController: {fileID: 0}
+  gridLayout: {fileID: 3149059737950092021}
 --- !u!1 &6194812808328176645
 GameObject:
   m_ObjectHideFlags: 0

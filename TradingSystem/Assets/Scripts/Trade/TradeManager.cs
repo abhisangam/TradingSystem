@@ -41,7 +41,7 @@ public class TradeManager: MonoBehaviour
     private void OnPlayerItemSelected(TradableItemSO tradableItemSO)
     {
         isSelling = true;
-        tradableItemInfoPopup.Show(tradableItemSO, playerInventoryController.model.items[tradableItemSO], true);
+        tradableItemInfoPopup.Show(tradableItemSO, playerInventoryController.GetItemQuantity(tradableItemSO), true);
         tradableItemInfoPopup.OnBuyOrSellRequested = null;
         tradableItemInfoPopup.OnBuyOrSellRequested += OnSellOrBuyRequested;
         playerSelectedItemSO = tradableItemSO;
@@ -50,7 +50,7 @@ public class TradeManager: MonoBehaviour
     private void OnShopItemSelected(TradableItemSO tradableItemSO)
     {
         isSelling = false;
-        tradableItemInfoPopup.Show(tradableItemSO, shopInventoryController.model.items[tradableItemSO], false);
+        tradableItemInfoPopup.Show(tradableItemSO, shopInventoryController.GetItemQuantity(tradableItemSO), false);
         tradableItemInfoPopup.OnBuyOrSellRequested = null;
         tradableItemInfoPopup.OnBuyOrSellRequested += OnSellOrBuyRequested; ;
         playerSelectedItemSO = tradableItemSO;
@@ -59,8 +59,8 @@ public class TradeManager: MonoBehaviour
     private void OnSellOrBuyRequested()
     {
         int itemQuantity = isSelling
-            ? playerInventoryController.model.items[playerSelectedItemSO]
-            : shopInventoryController.model.items[playerSelectedItemSO];
+            ? playerInventoryController.GetItemQuantity(playerSelectedItemSO)
+            : shopInventoryController.GetItemQuantity(playerSelectedItemSO);
 
         tradableItemTradingPopup.Show(playerSelectedItemSO, itemQuantity, isSelling);
         tradableItemTradingPopup.OnBuyOrSell = null;
@@ -82,7 +82,7 @@ public class TradeManager: MonoBehaviour
         {
             price = playerSelectedItemSO.sellingPrice * itemsToTrade;
             
-            if(shopInventoryController.model.GetTotalWeight() + weight > shopInventoryController.model.GetMaxWeight())
+            if(shopInventoryController.GetInventoryWeight() + weight > shopInventoryController.GetInventoryMaxWeight())
             {
                 //Show weight exeeded error message
                 Debug.Log("Weight exceeded");
@@ -101,7 +101,7 @@ public class TradeManager: MonoBehaviour
                 //Show not enough funds error message
                 Debug.Log("Not enough funds");
             }
-            else if (playerInventoryController.model.GetTotalWeight() + weight > playerInventoryController.model.GetMaxWeight())
+            else if (playerInventoryController.GetInventoryWeight() + weight > playerInventoryController.GetInventoryMaxWeight())
             {
                 //Show weight exeeded error message
                 Debug.Log("Weight exceeded");

@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class ItemFilterToggle : MonoBehaviour
 {
-    [SerializeField] private TradableItemType itemType;
+    [SerializeField] private TradableItemFilterOption itemFilterType;
 
     private Toggle toggle;
 
-    public Action<TradableItemType> OnFilterItem;
+    public Action<TradableItemFilterOption> OnFilterItem;
 
     private void Awake()
     {
@@ -22,7 +22,7 @@ public class ItemFilterToggle : MonoBehaviour
     {
         if (isOn)
         {
-            OnFilterItem?.Invoke(itemType);
+            OnFilterItem?.Invoke(itemFilterType);
         }
     }
 

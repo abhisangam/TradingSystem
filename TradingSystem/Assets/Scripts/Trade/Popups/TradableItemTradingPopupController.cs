@@ -61,17 +61,23 @@ public class TradableItemTradingPopupController : MonoBehaviour
         {
             tradingItemCount++;
             tradingItemCountText.text = tradingItemCount.ToString();
-            totalCostText.text = "Cost: " + (tradingItemCount * tradableItemSO.sellingPrice);
+            int tradingPrice = isSelling
+                ? tradableItemSO.sellingPrice
+                : tradableItemSO.buyingPrice;
+            totalCostText.text = "Cost: " + (tradingItemCount * tradingPrice);
         }
     }
 
-    private void DecreaseTradingItemCount(TradableItemSO itemSO)
+    private void DecreaseTradingItemCount(TradableItemSO tradableItemSO)
     {
         if (tradingItemCount > 1)
         {
             tradingItemCount--;
             tradingItemCountText.text = tradingItemCount.ToString();
-            totalCostText.text = "Cost: " + (tradingItemCount * itemSO.sellingPrice);
+            int tradingPrice = isSelling
+                ? tradableItemSO.sellingPrice
+                : tradableItemSO.buyingPrice;
+            totalCostText.text = "Cost: " + (tradingItemCount * tradingPrice);
         }
     }
 
