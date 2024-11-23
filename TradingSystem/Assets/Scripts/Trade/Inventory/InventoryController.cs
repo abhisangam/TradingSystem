@@ -52,11 +52,17 @@ public class InventoryController
 
     public void AddItem(TradableItemSO itemSO, int quantity)
     {
+        //Check if there is space in inventory
+        if(itemSO.weight * quantity + model.totalWeight > model.GetMaxWeight())
+        {
+            //TO DO: Display message that inventory is full
+            Debug.Log("Inventory is full");
+        }
         //check if item type already exists model
         //and add in view if item is totally new
-        if(!model.items.ContainsKey(itemSO))
+        if (!model.items.ContainsKey(itemSO))
         {
-            itemControllers.TryAdd(itemSO, CreateItemController(itemSO, quantity));
+            itemControllers.Add(itemSO, CreateItemController(itemSO, quantity));
         }
         model.AddItem(itemSO, quantity);
         itemControllers[itemSO].setItemQuantity(model.items[itemSO]);
@@ -72,11 +78,6 @@ public class InventoryController
             //if item does not have any quantity left, remove it 
             DestroyItemController(itemSO);
         }
-    }
-
-    public void ShowInventory()
-    {
-        view.DisplayInventoryView();
     }
 
     public void RelayItemClickEvent(TradableItemSO itemSO)

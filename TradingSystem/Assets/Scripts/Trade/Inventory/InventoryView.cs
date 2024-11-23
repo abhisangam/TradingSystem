@@ -8,8 +8,6 @@ public class InventoryView : MonoBehaviour
     [SerializeField] private Transform itemsParent;
     [SerializeField] private TradableItemView tradableItemPrefab;
 
-    [SerializeField] private TradableItemInfoPopupController itemInfoPopupController;
-
     private RectTransform contentRectTransform;
     [SerializeField] private GridLayoutGroup gridLayout;
     private Vector2 gridCellSize;
@@ -34,13 +32,10 @@ public class InventoryView : MonoBehaviour
     {
         this.controller = controller;
     }
-    public void DisplayInventoryView()
-    {
-        
-    }
 
     public TradableItemView CreateItemView()
     {
+        Debug.Log(itemsParent.name);
         TradableItemView itemView = Instantiate(tradableItemPrefab, itemsParent);
         return itemView;
     }

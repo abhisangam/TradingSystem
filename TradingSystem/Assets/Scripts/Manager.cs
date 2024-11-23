@@ -5,38 +5,25 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
-    public PlayerInventoryView playerInventoryView;
-    private PlayerInventoryController playerInventoryController;
-    private PlayerInventoryModel playerInventoryModel;
-
+    [SerializeField] private PlayerController playerController;
     public ShopInventoryView shopInventoryView;
     private ShopInventoryModel shopInventoryModel;
     private ShopInventoryController shopInventoryController;
 
-    public TradableItemSO[] tradableItems;
+    public TradableItemListSO tradableItems;
     // Start is called before the first frame update
 
     public TradeManager tradeManager;
     void Start()
     {
-        playerInventoryModel = new PlayerInventoryModel(100000);
-        playerInventoryController = new PlayerInventoryController(playerInventoryModel, playerInventoryView);
-        for(int i = 0; i < tradableItems.Length; i++)
-        {
-            playerInventoryController.AddItem(tradableItems[i], 1);
-        }
-
         shopInventoryModel = new ShopInventoryModel(100000);
         shopInventoryController = new ShopInventoryController(shopInventoryModel, shopInventoryView);
-        for (int i = 0; i < tradableItems.Length; i++)
+        for (int i = 0; i < tradableItems.tradableItems.Length; i++)
         {
-            shopInventoryController.AddItem(tradableItems[i], 10);
+            shopInventoryController.AddItem(tradableItems.tradableItems[i], 10);
         }
 
-        playerInventoryController.ShowInventory();
-
-
-        tradeManager.ShowTradingWindow(playerInventoryController, shopInventoryController);
+        tradeManager.ShowTradingWindow(playerController.GetPlayerInventoryController(), shopInventoryController);
     }
 
     // Update is called once per frame

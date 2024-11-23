@@ -5,6 +5,7 @@ public class TradeManager: MonoBehaviour
 {
     [SerializeField] private TradableItemInfoPopupController tradableItemInfoPopup;
     [SerializeField] private TradableItemTradingPopupController tradableItemTradingPopup;
+    [SerializeField] private PlayerController playerController;
 
     private bool isSelling;
     private int currentTradingItemsCount;
@@ -13,11 +14,6 @@ public class TradeManager: MonoBehaviour
     private ShopInventoryController shopInventoryController;
 
     private TradableItemSO playerSelectedItemSO;
-
-    private int playerMoney = 10000000;
-    private void ShowTradableItemInfoPopup()
-    {
-    }
 
     public void ShowTradingWindow(PlayerInventoryController playerInventoryController, ShopInventoryController shopInventoryController)
     {
@@ -89,14 +85,15 @@ public class TradeManager: MonoBehaviour
             }
             else
             {
-                ShowTradeConfirmationPopup();
+                ExecuteTrade(this.currentTradingItemsCount, price);
+           
             }
         }
         else
         {
             price = playerSelectedItemSO.buyingPrice * itemsToTrade;
 
-            if (playerMoney < price)
+            if (playerController.GetCurrency() < price)
             {
                 //Show not enough funds error message
                 Debug.Log("Not enough funds");
@@ -108,7 +105,7 @@ public class TradeManager: MonoBehaviour
             }
             else
             {
-                ShowTradeConfirmationPopup();
+                ExecuteTrade(this.currentTradingItemsCount, price);
             }
         }
 
@@ -119,39 +116,29 @@ public class TradeManager: MonoBehaviour
         tradableItemTradingPopup.Hide();
     }
 
-    private void ShowTradeConfirmationPopup()
-    {
-        // To do
-        // First show trade confirmation popup
-        // ExecuteTrade trade if player confirmed
-        OnTradeConfirmationAccepted();
-    }
-
-    private void ExecuteTrade(int itemsToTrade)
+    private void ExecuteTrade(int itemsToTrade, int tradeAmount)
     {
         Debug.Log("Trade Executed");
         if (this.isSelling)
         {
             playerInventoryController.RemoveItem(playerSelectedItemSO, itemsToTrade);
             shopInventoryController.AddItem(playerSelectedItemSO, itemsToTrade);
+            playerController.AddCurrency(tradeAmount);
         }
         else
         {
             playerInventoryController.AddItem(playerSelectedItemSO, itemsToTrade);
             shopInventoryController.RemoveItem(playerSelectedItemSO, itemsToTrade);
+            playerController.SubtractCurrency(tradeAmount);
         }
+
+        FinishTrading();
     }
 
-    void OnTradeConfirmationAccepted()
+    private void FinishTrading()
     {
-        ExecuteTrade(this.currentTradingItemsCount);
         tradableItemTradingPopup.Hide();
         tradableItemTradingPopup.OnBuyOrSell -= OnBuyOrSellOrderPlaced;
-    }
-
-    void OnTradeConfirmationRejected()
-    {
-
     }
 
 }
