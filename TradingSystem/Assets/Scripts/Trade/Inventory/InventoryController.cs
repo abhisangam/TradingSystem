@@ -56,7 +56,7 @@ public class InventoryController
         if(itemSO.weight * quantity + model.totalWeight > model.GetMaxWeight())
         {
             //TO DO: Display message that inventory is full
-            Debug.LogError("Inventory is full");
+            UIService.Instance.warningPopup.Show("Not enough space in the inventory", 2f);
             return;
         }
         //check if item type already exists model

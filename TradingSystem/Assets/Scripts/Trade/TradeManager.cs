@@ -83,7 +83,7 @@ public class TradeManager: MonoBehaviour
             if(shopInventoryController.GetInventoryWeight() + weight > shopInventoryController.GetInventoryMaxWeight())
             {
                 //Show weight exeeded error message
-                Debug.Log("Weight exceeded");
+                UIService.Instance.warningPopup.Show("Not enough space in the inventory", 2f);
             }
             else
             {
@@ -98,12 +98,12 @@ public class TradeManager: MonoBehaviour
             if (playerController.GetCurrency() < price)
             {
                 //Show not enough funds error message
-                Debug.Log("Not enough funds");
+                UIService.Instance.warningPopup.Show("Not enough funds", 2f);
             }
             else if (playerInventoryController.GetInventoryWeight() + weight > playerInventoryController.GetInventoryMaxWeight())
             {
                 //Show weight exeeded error message
-                Debug.Log("Weight exceeded");
+                UIService.Instance.warningPopup.Show("Not enough space in the inventory", 2f);
             }
             else
             {

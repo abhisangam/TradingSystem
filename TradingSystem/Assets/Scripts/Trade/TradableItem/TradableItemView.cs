@@ -37,13 +37,18 @@ public class TradableItemView : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        TradableItemQuickInfo.Show(controller.GetItemSO());
+        UIService.Instance.quickInfo.Show(GetQuickInfoText(controller.GetItemSO()));
         Debug.Log("Pointer Enter");
+    }
+
+    private string GetQuickInfoText(TradableItemSO itemSO)
+    {
+        return "<b>" + itemSO.name + "</b>" + ": " + itemSO.description;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        TradableItemQuickInfo.Hide();
+        UIService.Instance.quickInfo.Hide();
         Debug.Log("Pointer Exit");
     }
 }
