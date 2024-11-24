@@ -47,4 +47,9 @@ public class ShopInventoryController : InventoryController
                 return TradableItemType.Consumable;
         }
     }
+
+    ~ShopInventoryController()
+    {
+        ((ShopInventoryView)view).OnFilterItem -= OnFilterItem;
+    }
 }

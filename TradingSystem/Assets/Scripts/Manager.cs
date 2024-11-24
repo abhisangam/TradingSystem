@@ -16,7 +16,7 @@ public class Manager : MonoBehaviour
     public TradeManager tradeManager;
     void Start()
     {
-        shopInventoryModel = new ShopInventoryModel(100000);
+        shopInventoryModel = new ShopInventoryModel(10000);
         shopInventoryController = new ShopInventoryController(shopInventoryModel, shopInventoryView);
         for (int i = 0; i < tradableItems.tradableItems.Length; i++)
         {

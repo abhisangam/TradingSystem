@@ -59,7 +59,5 @@ public class TradableItemController
 
         model = null;
         view = null;
-
-        Debug.Log("THIS BLOODY CONTROLLER IS DESTROYED NOW");
     }
 }

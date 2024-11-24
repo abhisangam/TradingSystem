@@ -36,6 +36,7 @@ public class TradableItemInfoPopupController : MonoBehaviour
 
         buyOrSellButton.onClick.AddListener(OnBuyOrSellButtonClicked);
         closeButton.onClick.AddListener(OnCloseButtonClicked);
+        Debug.Log("Item info popup shown, listeners added");
     }
 
     public void Hide()
@@ -46,6 +47,7 @@ public class TradableItemInfoPopupController : MonoBehaviour
     private void OnBuyOrSellButtonClicked()
     {
         OnBuyOrSellRequested?.Invoke();
+        Debug.Log("Buy or sell button clicked");
     }
 
     private void OnCloseButtonClicked()

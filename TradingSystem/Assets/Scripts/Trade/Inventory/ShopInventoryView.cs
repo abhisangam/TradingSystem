@@ -29,4 +29,12 @@ public class ShopInventoryView : InventoryView
     {
         OnFilterItem?.Invoke(type);
     }
+
+    private void OnDestroy()
+    {
+        foreach (ItemFilterToggle toggle in itemTypeFilterButtons)
+        {
+            toggle.OnFilterItem -= OnItemTypeFilterButtonClicked;
+        }
+    }
 }

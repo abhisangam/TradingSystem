@@ -16,7 +16,7 @@ public class PlayerController: MonoBehaviour
 
     private void Awake()
     {
-        PlayerInventoryModel playerInventoryModel = new PlayerInventoryModel(100000);
+        PlayerInventoryModel playerInventoryModel = new PlayerInventoryModel(1000);
         playerInventoryController = new PlayerInventoryController(playerInventoryModel, playerInventoryView);
 
         currency = 0;

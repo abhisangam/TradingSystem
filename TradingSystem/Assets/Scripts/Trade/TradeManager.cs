@@ -32,24 +32,27 @@ public class TradeManager: MonoBehaviour
     public void HideTradingWindow()
     {
         //unsubscribe to inventory events
+        playerInventoryController.OnItemSelected -= OnPlayerItemSelected;
+        shopInventoryController.OnItemSelected -= OnShopItemSelected;
     }
 
     private void OnPlayerItemSelected(TradableItemSO tradableItemSO)
     {
         isSelling = true;
+        playerSelectedItemSO = tradableItemSO;
         tradableItemInfoPopup.Show(tradableItemSO, playerInventoryController.GetItemQuantity(tradableItemSO), true);
         tradableItemInfoPopup.OnBuyOrSellRequested = null;
         tradableItemInfoPopup.OnBuyOrSellRequested += OnSellOrBuyRequested;
-        playerSelectedItemSO = tradableItemSO;
     }
 
     private void OnShopItemSelected(TradableItemSO tradableItemSO)
     {
         isSelling = false;
+        playerSelectedItemSO = tradableItemSO;
         tradableItemInfoPopup.Show(tradableItemSO, shopInventoryController.GetItemQuantity(tradableItemSO), false);
         tradableItemInfoPopup.OnBuyOrSellRequested = null;
-        tradableItemInfoPopup.OnBuyOrSellRequested += OnSellOrBuyRequested; ;
-        playerSelectedItemSO = tradableItemSO;
+        tradableItemInfoPopup.OnBuyOrSellRequested += OnSellOrBuyRequested;
+        Debug.Log("Shop item selected and event subscribed");
     }
 
     private void OnSellOrBuyRequested()
@@ -64,7 +67,6 @@ public class TradeManager: MonoBehaviour
         tradableItemTradingPopup.OnBuyOrSell += OnBuyOrSellOrderPlaced;
         tradableItemTradingPopup.OnCancelTrade += OnTradeCancelled;
         tradableItemInfoPopup.Hide();
-
     }
 
     void OnBuyOrSellOrderPlaced(int itemsToTrade)

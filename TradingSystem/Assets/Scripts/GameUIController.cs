@@ -25,4 +25,9 @@ public class GameUIController : MonoBehaviour
     {
         currencyText.text = currency.ToString();
     }
+
+    private void OnDestroy()
+    {
+        playerController.OnCurrencyChanged -= OnCurrencyChanged;
+    }
 }

@@ -56,7 +56,8 @@ public class InventoryController
         if(itemSO.weight * quantity + model.totalWeight > model.GetMaxWeight())
         {
             //TO DO: Display message that inventory is full
-            Debug.Log("Inventory is full");
+            Debug.LogError("Inventory is full");
+            return;
         }
         //check if item type already exists model
         //and add in view if item is totally new
@@ -75,7 +76,7 @@ public class InventoryController
             itemControllers[itemSO].setItemQuantity(model.items[itemSO]);
         else
         {
-            //if item does not have any quantity left, remove it 
+            //if item does not have any quantity left, remove it from the view and destroy the controller
             DestroyItemController(itemSO);
         }
     }
