@@ -28,10 +28,10 @@ public class TradableItemInfoPopupController : MonoBehaviour
         icon.sprite = itemSO.icon;
         itemName.text = itemSO.name;
         itemDescription.text = itemSO.description;
-        itemPriceText.text = "Price: " + (isSelling ? itemSO.sellingPrice : itemSO.buyingPrice).ToString();
-        itemQuantityText.text = "Quantity: " + itemQuantiy.ToString();
-        itemRarityText.text = "Rarity: " + itemSO.rarity.ToString();
-        itemWeightText.text = "Weight: " + itemSO.weight.ToString();
+        itemPriceText.text = "<b>Price: </b>" + (isSelling ? itemSO.sellingPrice : itemSO.buyingPrice).ToString();
+        itemQuantityText.text = "<b>Quantity: </b>" + itemQuantiy.ToString();
+        itemRarityText.text = "<b>Rarity: </b>" + itemSO.rarity.ToString();
+        itemWeightText.text = "<b>Weight: </b>" + itemSO.weight.ToString();
         buyOrSellButtonText.text = isSelling ? "Sell" : "Buy";
 
         buyOrSellButton.onClick.AddListener(OnBuyOrSellButtonClicked);
