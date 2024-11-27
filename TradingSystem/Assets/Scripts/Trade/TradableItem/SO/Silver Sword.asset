@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Silver Sword
   m_EditorClassIdentifier: 
   type: 1
-  description: Mighty weapon
+  description: Deals 50 damage
   icon: {fileID: 21300000, guid: 95052c6b62fb3de4695beaa99f842ac2, type: 3}
   buyingPrice: 6000
   sellingPrice: 2000
-  weight: 10
-  rarity: 0
+  weight: 7
+  rarity: 1

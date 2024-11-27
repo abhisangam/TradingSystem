@@ -417,8 +417,16 @@ PrefabInstance:
       value: PlayerInventoryPanel
       objectReference: {fileID: 0}
     - target: {fileID: 6442914283569801007, guid: 7ebe6cacf6de997429837c53029724f7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6442914283569801007, guid: 7ebe6cacf6de997429837c53029724f7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000015394406
+      objectReference: {fileID: 0}
+    - target: {fileID: 6442914283569801007, guid: 7ebe6cacf6de997429837c53029724f7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 57.6055
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8369430518963033024, guid: 7ebe6cacf6de997429837c53029724f7, type: 3}
       propertyPath: m_AnchorMax.x

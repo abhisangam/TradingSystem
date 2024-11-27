@@ -2,12 +2,6 @@
     classDiagram
     direction LR
 
-    namespace Inventory {
-        class InventoryController
-        class InventoryModel
-        class InventoryView
-    }
-
     namespace ShopInventory {
         class ShopInventoryController
         class ShopInventoryModel
@@ -26,16 +20,7 @@
         class TradableItemView
     }
 
-    InventoryController <|-- PlayerInventoryController
-    InventoryModel <|-- PlayerInventoryModel
-    InventoryView <|-- PlayerInventoryView
 
-    InventoryController <|-- ShopInventoryController
-    InventoryModel <|-- ShopInventoryModel
-    InventoryView <|-- ShopInventoryView
-
-    InventoryController *-- InventoryModel
-    InventoryController *-- InventoryView
 
     PlayerInventoryController *-- PlayerInventoryModel
     PlayerInventoryController *-- PlayerInventoryView
@@ -48,11 +33,27 @@
 
     TradableItemController *-- TradableItemModel
     TradableItemController *-- TradableItemView
-
-    TradableItemInfoPopupController <.. ShopInventoryController
-    TradableItemInfoPopupController <.. PlayerInventoryController
-
-    TradableItemInfoPopupController *-- TradableItemTradingPopupController
-
     TradableItemModel *-- TradableItemSO
+
+    TradeManager <.. ShopInventoryController
+    TradeManager <.. PlayerInventoryController
+    TradeManager <.. TradableItemInfoPopupController
+    TradeManager <.. TradableItemTradingPopupController
+
+    namespace Inventory {
+        class InventoryController
+        class InventoryModel
+        class InventoryView
+    }
+
+    InventoryController <|-- PlayerInventoryController
+    InventoryModel <|-- PlayerInventoryModel
+    InventoryView <|-- PlayerInventoryView
+
+    InventoryController <|-- ShopInventoryController
+    InventoryModel <|-- ShopInventoryModel
+    InventoryView <|-- ShopInventoryView
+
+    InventoryController *-- InventoryModel
+    InventoryController *-- InventoryView
 ```

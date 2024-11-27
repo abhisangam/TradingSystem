@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: HealthPotion
   m_EditorClassIdentifier: 
   type: 2
-  description: Heals the user
+  description: Heals the user upto 100 percent.
   icon: {fileID: 21300000, guid: 44dc65116207f4b46aa85443dae5ad96, type: 3}
-  buyingPrice: 100
-  sellingPrice: 80
-  weight: 1
+  buyingPrice: 50
+  sellingPrice: 30
+  weight: 2
   rarity: 0

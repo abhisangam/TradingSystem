@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Power Potion
   m_EditorClassIdentifier: 
   type: 2
-  description: Adds power
+  description: Boosts speed and damage for 1 hour by 10%
   icon: {fileID: 21300000, guid: 7b3876a2b72c44540a4bbd5aaba9e506, type: 3}
-  buyingPrice: 100
-  sellingPrice: 80
+  buyingPrice: 4000
+  sellingPrice: 3000
   weight: 1
-  rarity: 0
+  rarity: 3

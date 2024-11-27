@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Chest
   m_EditorClassIdentifier: 
   type: 3
-  description: Hidden
+  description: Hidden wealth very rarely found in castles. Gift it to someone to
+    gain trust.
   icon: {fileID: 21300000, guid: c8303e833b0ef184e99c1bc8940fff84, type: 3}
-  buyingPrice: 6
-  sellingPrice: 300000
-  weight: 200
+  buyingPrice: 4000
+  sellingPrice: 3000
+  weight: 50
   rarity: 4

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 360a144f83ebf3845b1fe7219de4960d, type: 3}
-  m_Name: Wood
+  m_Name: God Sword
   m_EditorClassIdentifier: 
-  type: 0
-  description: Can be used for constuction
-  icon: {fileID: 21300000, guid: f8a9cfc721a20ce409c3d743e9b251bc, type: 3}
-  buyingPrice: 20
-  sellingPrice: 10
-  weight: 2
-  rarity: 0
+  type: 1
+  description: Deals 160 damage. Damage doubles with power potion.
+  icon: {fileID: 21300000, guid: 90e99a7fde056a4418b9fe16084adb5c, type: 3}
+  buyingPrice: 15000
+  sellingPrice: 2000
+  weight: 5
+  rarity: 4

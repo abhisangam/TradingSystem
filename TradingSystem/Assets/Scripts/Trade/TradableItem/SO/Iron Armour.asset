@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Iron Armour
   m_EditorClassIdentifier: 
   type: 1
-  description: Yellow robe with thick fabric
+  description: Reduces the damage by 90%. Deteriorates over time.
   icon: {fileID: 21300000, guid: 567fdd2e557fefc478f8aaa7ae56fb11, type: 3}
-  buyingPrice: 4000
-  sellingPrice: 100
-  weight: 2
-  rarity: 0
+  buyingPrice: 500
+  sellingPrice: 300
+  weight: 10
+  rarity: 2
