@@ -6,8 +6,18 @@ public class InventoryModel
 {
     public Dictionary<TradableItemSO, int> items;
 
-    public int totalWeight;
+    private int totalWeight;
+    public int TotalWeight { 
+        get { return totalWeight; }
+        set { totalWeight = value; }
+    }
+
     private int inventoryMaxWeight;
+    public int InventoryMaxWeight
+    {
+        get { return inventoryMaxWeight; }
+        set { inventoryMaxWeight = value; }
+    }
 
     public InventoryModel(int maxWeight)
     {
@@ -51,27 +61,5 @@ public class InventoryModel
             return items[item];
         else
             return 0;
-    }
-
-    public void SetInventoryMaxWeight(int maxWeight)
-    {
-        if (maxWeight < totalWeight)
-        {
-            //raise error
-            Debug.LogError("Max weight you are trying to set is less than current total weight");
-        }
-
-        //Setting max weight any way, handling it is not the scope of this project
-        inventoryMaxWeight = maxWeight;
-    }
-
-    public int GetTotalWeight()
-    {
-        return totalWeight;
-    }
-
-    public int GetMaxWeight()
-    {
-        return inventoryMaxWeight;
     }
 }

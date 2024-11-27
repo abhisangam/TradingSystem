@@ -53,7 +53,7 @@ public class InventoryController
     public void AddItem(TradableItemSO itemSO, int quantity)
     {
         //Check if there is space in inventory
-        if(itemSO.weight * quantity + model.totalWeight > model.GetMaxWeight())
+        if(itemSO.weight * quantity + model.TotalWeight > model.InventoryMaxWeight)
         {
             //TO DO: Display message that inventory is full
             UIService.Instance.warningPopup.Show("Not enough space in the inventory", 2f);
@@ -93,11 +93,11 @@ public class InventoryController
 
     public int GetInventoryWeight()
     {
-        return model.GetTotalWeight();
+        return model.TotalWeight;
     }
 
     public int GetInventoryMaxWeight()
     {
-        return model.GetMaxWeight();
+        return model.InventoryMaxWeight;
     }
 }

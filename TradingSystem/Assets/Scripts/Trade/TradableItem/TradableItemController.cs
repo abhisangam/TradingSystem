@@ -13,8 +13,8 @@ public class TradableItemController
         this.view = view;
         this.model = model;
 
-        this.view.SetIconSprite(model.icon);
-        this.view.SetQuantityText(model.quantity);
+        this.view.SetIconSprite(model.TradableItemSO.icon);
+        this.view.SetQuantityText(model.Quantity);
         this.view.SetController(this);
 
         this.view.OnItemClicked += OnItemClicked;
@@ -22,23 +22,23 @@ public class TradableItemController
     private void OnItemClicked()
     {
         Debug.Log("Item clicked");
-        OnItemSelected?.Invoke(this.model.tradableItemSO);
+        OnItemSelected?.Invoke(this.model.TradableItemSO);
     }
 
     public void setItemQuantity(int quantity)
     {
-        model.quantity = quantity;
+        model.Quantity = quantity;
         view.SetQuantityText(quantity);
     }
 
     public TradableItemSO GetItemSO()
     {
-        return this.model.tradableItemSO;
+        return this.model.TradableItemSO;
     }
 
     public TradableItemType GetItemType()
     {
-        return this.model.tradableItemSO.type;
+        return this.model.TradableItemSO.type;
     }
 
     public void DestroyModelView()
