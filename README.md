@@ -1,6 +1,6 @@
 # TradingSystem
-### Sumary
-A scalable\game mechanic for in-game trading between player and the shop. 
+### Summary
+A scalable game mechanic for in-game trading between player and the shop. 
 
 ### Gameplay demo
 https://github.com/user-attachments/assets/be53922e-2f0a-4ed6-ba7e-e21b6830e2d9
@@ -34,4 +34,4 @@ Implememted as MVC inheriting from Inventory MVC classes. Player inventory is cr
 `UIService` class is a singleton that manages warning popups and the quick info tool-tip.
 
 ### `Player` and `GameplayManager`
-These classes are implemented to demosntrate the mechanic. These serve the purpose of creating the inventories and adding items to them to simulate real game scenario.
+These classes are implemented to demonstrate the mechanic. These serve the purpose of creating the inventories and adding items to them to simulate real game scenario.
